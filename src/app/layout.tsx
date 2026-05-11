@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'ConvertEasy - Free Online Unit Converter Tools',
   description: 'Free online unit converter tools for cooking, height, clothing sizes, temperature and more. Fast, accurate conversions on any device.',
+  other: {
+    'google-adsense-account': 'ca-pub-7338826858147459',
+  },
 };
 
 export default function RootLayout({
@@ -16,13 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-gray-900 flex flex-col">
+      <head>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7338826858147459"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
+      </head>
+      <body className="min-h-screen bg-white text-gray-900 flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
