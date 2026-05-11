@@ -8,7 +8,7 @@ export interface Ingredient {
 export const ingredients: Ingredient[] = [
   {
     id: 'flour',
-    name: '面粉 (All-Purpose Flour)',
+    name: 'All-Purpose Flour',
     gramsPerCup: 125,
     commonAmounts: [
       { cups: 0.25, grams: 31 },
@@ -20,7 +20,7 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 'butter',
-    name: '黄油 (Butter)',
+    name: 'Butter',
     gramsPerCup: 227,
     commonAmounts: [
       { cups: 0.25, grams: 57 },
@@ -32,7 +32,7 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 'sugar',
-    name: '糖 (Sugar)',
+    name: 'Sugar',
     gramsPerCup: 200,
     commonAmounts: [
       { cups: 0.25, grams: 50 },
@@ -44,7 +44,7 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 'milk',
-    name: '牛奶 (Milk)',
+    name: 'Milk',
     gramsPerCup: 245,
     commonAmounts: [
       { cups: 0.25, grams: 61 },
