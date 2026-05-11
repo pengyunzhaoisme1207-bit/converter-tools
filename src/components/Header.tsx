@@ -16,7 +16,6 @@ export default function Header() {
           <Link href="/temperature/celsius-to-fahrenheit" className="hover:text-blue-600">Temp</Link>
           <Link href="/speed/mph-to-kmh" className="hover:text-blue-600">Speed</Link>
           <Link href="/area/sqft-to-sqm" className="hover:text-blue-600">Area</Link>
-          <Link href="/currency/usd-to-jpy" className="hover:text-blue-600">Currency</Link>
           <Link href="/about" className="hover:text-blue-600">About</Link>
         </nav>
         <nav className="flex sm:hidden text-sm text-gray-600">

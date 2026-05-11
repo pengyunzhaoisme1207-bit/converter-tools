@@ -24,8 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/speed/mph-to-kmh`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
     // Area
     { url: `${baseUrl}/area/sqft-to-sqm`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
-    // Currency
-    { url: `${baseUrl}/currency/usd-to-jpy`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
   ];
 
   // Batch height pages (150cm to 200cm)

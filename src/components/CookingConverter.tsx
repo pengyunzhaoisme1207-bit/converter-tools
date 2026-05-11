@@ -4,8 +4,14 @@ import { useState } from 'react';
 import { cupsToGrams, gramsToCups } from '@/lib/conversions';
 import { ingredients } from '@/lib/cooking-data';
 
+const categories = Array.from(new Set(ingredients.map((i) => i.category)));
+
+function getIngredientsForCategory(category: string) {
+  return ingredients.filter((i) => i.category === category);
+}
+
 export default function CookingConverter() {
-  const [ingredientId, setIngredientId] = useState('flour');
+  const [ingredientId, setIngredientId] = useState('all-purpose-flour');
   const [cups, setCups] = useState('1');
   const [grams, setGrams] = useState('');
 
@@ -47,12 +53,16 @@ export default function CookingConverter() {
         <select
           value={ingredientId}
           onChange={(e) => handleIngredientChange(e.target.value)}
-          className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full max-w-md px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
-          {ingredients.map((i) => (
-            <option key={i.id} value={i.id}>
-              {i.name}
-            </option>
+          {categories.map((cat) => (
+            <optgroup key={cat} label={cat}>
+              {getIngredientsForCategory(cat).map((i) => (
+                <option key={i.id} value={i.id}>
+                  {i.name} ({i.gramsPerCup}g/cup)
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
       </div>

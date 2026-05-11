@@ -1,25 +1,148 @@
 export interface Ingredient {
   id: string;
+  category: string;
   name: string;
   gramsPerCup: number;
   commonAmounts: { cups: number; grams: number }[];
 }
 
 export const ingredients: Ingredient[] = [
+  // Flours
   {
-    id: 'flour',
+    id: 'all-purpose-flour',
+    category: 'Flours',
     name: 'All-Purpose Flour',
-    gramsPerCup: 125,
+    gramsPerCup: 120,
     commonAmounts: [
-      { cups: 0.25, grams: 31 },
-      { cups: 0.5, grams: 63 },
-      { cups: 1, grams: 125 },
-      { cups: 2, grams: 250 },
-      { cups: 3, grams: 375 },
+      { cups: 0.25, grams: 30 },
+      { cups: 0.5, grams: 60 },
+      { cups: 1, grams: 120 },
+      { cups: 2, grams: 240 },
+      { cups: 3, grams: 360 },
     ],
   },
   {
+    id: 'bread-flour',
+    category: 'Flours',
+    name: 'Bread Flour',
+    gramsPerCup: 130,
+    commonAmounts: [
+      { cups: 0.25, grams: 33 },
+      { cups: 0.5, grams: 65 },
+      { cups: 1, grams: 130 },
+      { cups: 2, grams: 260 },
+      { cups: 3, grams: 390 },
+    ],
+  },
+  {
+    id: 'cake-flour',
+    category: 'Flours',
+    name: 'Cake Flour',
+    gramsPerCup: 115,
+    commonAmounts: [
+      { cups: 0.25, grams: 29 },
+      { cups: 0.5, grams: 58 },
+      { cups: 1, grams: 115 },
+      { cups: 2, grams: 230 },
+      { cups: 3, grams: 345 },
+    ],
+  },
+  {
+    id: 'whole-wheat-flour',
+    category: 'Flours',
+    name: 'Whole Wheat Flour',
+    gramsPerCup: 113,
+    commonAmounts: [
+      { cups: 0.25, grams: 28 },
+      { cups: 0.5, grams: 57 },
+      { cups: 1, grams: 113 },
+      { cups: 2, grams: 226 },
+      { cups: 3, grams: 339 },
+    ],
+  },
+  {
+    id: 'almond-flour',
+    category: 'Flours',
+    name: 'Almond Flour',
+    gramsPerCup: 96,
+    commonAmounts: [
+      { cups: 0.25, grams: 24 },
+      { cups: 0.5, grams: 48 },
+      { cups: 1, grams: 96 },
+      { cups: 2, grams: 192 },
+      { cups: 3, grams: 288 },
+    ],
+  },
+  // Sugars & Sweeteners
+  {
+    id: 'granulated-sugar',
+    category: 'Sugars & Sweeteners',
+    name: 'Granulated Sugar (White)',
+    gramsPerCup: 200,
+    commonAmounts: [
+      { cups: 0.25, grams: 50 },
+      { cups: 0.5, grams: 100 },
+      { cups: 1, grams: 200 },
+      { cups: 2, grams: 400 },
+      { cups: 3, grams: 600 },
+    ],
+  },
+  {
+    id: 'brown-sugar',
+    category: 'Sugars & Sweeteners',
+    name: 'Brown Sugar (Packed)',
+    gramsPerCup: 220,
+    commonAmounts: [
+      { cups: 0.25, grams: 55 },
+      { cups: 0.5, grams: 110 },
+      { cups: 1, grams: 220 },
+      { cups: 2, grams: 440 },
+      { cups: 3, grams: 660 },
+    ],
+  },
+  {
+    id: 'powdered-sugar',
+    category: 'Sugars & Sweeteners',
+    name: 'Powdered Sugar (Icing)',
+    gramsPerCup: 120,
+    commonAmounts: [
+      { cups: 0.25, grams: 30 },
+      { cups: 0.5, grams: 60 },
+      { cups: 1, grams: 120 },
+      { cups: 2, grams: 240 },
+      { cups: 3, grams: 360 },
+    ],
+  },
+  {
+    id: 'honey',
+    category: 'Sugars & Sweeteners',
+    name: 'Honey',
+    gramsPerCup: 340,
+    commonAmounts: [
+      { cups: 0.25, grams: 85 },
+      { cups: 0.5, grams: 170 },
+      { cups: 1, grams: 340 },
+      { cups: 2, grams: 680 },
+      { cups: 3, grams: 1020 },
+    ],
+  },
+  {
+    id: 'maple-syrup',
+    category: 'Sugars & Sweeteners',
+    name: 'Maple Syrup',
+    gramsPerCup: 322,
+    commonAmounts: [
+      { cups: 0.25, grams: 81 },
+      { cups: 0.5, grams: 161 },
+      { cups: 1, grams: 322 },
+      { cups: 2, grams: 644 },
+      { cups: 3, grams: 966 },
+    ],
+  },
+  // Fats & Oils
+  {
     id: 'butter',
+    category: 'Fats & Oils',
     name: 'Butter',
     gramsPerCup: 227,
     commonAmounts: [
@@ -31,20 +154,62 @@ export const ingredients: Ingredient[] = [
     ],
   },
   {
-    id: 'sugar',
-    name: 'Sugar',
-    gramsPerCup: 200,
+    id: 'vegetable-oil',
+    category: 'Fats & Oils',
+    name: 'Vegetable Oil',
+    gramsPerCup: 218,
     commonAmounts: [
-      { cups: 0.25, grams: 50 },
-      { cups: 0.5, grams: 100 },
-      { cups: 1, grams: 200 },
-      { cups: 2, grams: 400 },
-      { cups: 3, grams: 600 },
+      { cups: 0.25, grams: 55 },
+      { cups: 0.5, grams: 109 },
+      { cups: 1, grams: 218 },
+      { cups: 2, grams: 436 },
+      { cups: 3, grams: 654 },
     ],
   },
   {
+    id: 'coconut-oil',
+    category: 'Fats & Oils',
+    name: 'Coconut Oil',
+    gramsPerCup: 218,
+    commonAmounts: [
+      { cups: 0.25, grams: 55 },
+      { cups: 0.5, grams: 109 },
+      { cups: 1, grams: 218 },
+      { cups: 2, grams: 436 },
+      { cups: 3, grams: 654 },
+    ],
+  },
+  // Liquids & Dairy
+  {
     id: 'milk',
-    name: 'Milk',
+    category: 'Liquids & Dairy',
+    name: 'Milk (Whole)',
+    gramsPerCup: 227,
+    commonAmounts: [
+      { cups: 0.25, grams: 57 },
+      { cups: 0.5, grams: 114 },
+      { cups: 1, grams: 227 },
+      { cups: 2, grams: 454 },
+      { cups: 3, grams: 681 },
+    ],
+  },
+  {
+    id: 'heavy-cream',
+    category: 'Liquids & Dairy',
+    name: 'Heavy Cream',
+    gramsPerCup: 227,
+    commonAmounts: [
+      { cups: 0.25, grams: 57 },
+      { cups: 0.5, grams: 114 },
+      { cups: 1, grams: 227 },
+      { cups: 2, grams: 454 },
+      { cups: 3, grams: 681 },
+    ],
+  },
+  {
+    id: 'yogurt',
+    category: 'Liquids & Dairy',
+    name: 'Yogurt (Plain)',
     gramsPerCup: 245,
     commonAmounts: [
       { cups: 0.25, grams: 61 },
@@ -54,8 +219,83 @@ export const ingredients: Ingredient[] = [
       { cups: 3, grams: 735 },
     ],
   },
+  {
+    id: 'water',
+    category: 'Liquids & Dairy',
+    name: 'Water',
+    gramsPerCup: 237,
+    commonAmounts: [
+      { cups: 0.25, grams: 59 },
+      { cups: 0.5, grams: 119 },
+      { cups: 1, grams: 237 },
+      { cups: 2, grams: 474 },
+      { cups: 3, grams: 711 },
+    ],
+  },
+  // Dry Goods & Mix-ins
+  {
+    id: 'cocoa-powder',
+    category: 'Dry Goods & Mix-ins',
+    name: 'Cocoa Powder (Unsweetened)',
+    gramsPerCup: 86,
+    commonAmounts: [
+      { cups: 0.25, grams: 22 },
+      { cups: 0.5, grams: 43 },
+      { cups: 1, grams: 86 },
+      { cups: 2, grams: 172 },
+      { cups: 3, grams: 258 },
+    ],
+  },
+  {
+    id: 'rolled-oats',
+    category: 'Dry Goods & Mix-ins',
+    name: 'Rolled Oats',
+    gramsPerCup: 90,
+    commonAmounts: [
+      { cups: 0.25, grams: 23 },
+      { cups: 0.5, grams: 45 },
+      { cups: 1, grams: 90 },
+      { cups: 2, grams: 180 },
+      { cups: 3, grams: 270 },
+    ],
+  },
+  {
+    id: 'chocolate-chips',
+    category: 'Dry Goods & Mix-ins',
+    name: 'Chocolate Chips',
+    gramsPerCup: 170,
+    commonAmounts: [
+      { cups: 0.25, grams: 43 },
+      { cups: 0.5, grams: 85 },
+      { cups: 1, grams: 170 },
+      { cups: 2, grams: 340 },
+      { cups: 3, grams: 510 },
+    ],
+  },
+  {
+    id: 'uncooked-rice',
+    category: 'Dry Goods & Mix-ins',
+    name: 'Rice (Uncooked)',
+    gramsPerCup: 185,
+    commonAmounts: [
+      { cups: 0.25, grams: 46 },
+      { cups: 0.5, grams: 93 },
+      { cups: 1, grams: 185 },
+      { cups: 2, grams: 370 },
+      { cups: 3, grams: 555 },
+    ],
+  },
+  {
+    id: 'cornstarch',
+    category: 'Dry Goods & Mix-ins',
+    name: 'Cornstarch',
+    gramsPerCup: 128,
+    commonAmounts: [
+      { cups: 0.25, grams: 32 },
+      { cups: 0.5, grams: 64 },
+      { cups: 1, grams: 128 },
+      { cups: 2, grams: 256 },
+      { cups: 3, grams: 384 },
+    ],
+  },
 ];
-
-export function getIngredient(id: string): Ingredient | undefined {
-  return ingredients.find((i) => i.id === id);
-}
