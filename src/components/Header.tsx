@@ -1,25 +1,30 @@
 import Link from 'next/link';
 
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/cooking/cups-to-grams', label: 'Cooking' },
+  { href: '/length/cm-to-feet', label: 'Length' },
+  { href: '/weight/kg-to-lbs', label: 'Weight' },
+  { href: '/clothing/size-converter', label: 'Clothing' },
+  { href: '/temperature/celsius-to-fahrenheit', label: 'Temp' },
+  { href: '/speed/mph-to-kmh', label: 'Speed' },
+  { href: '/area/sqft-to-sqm', label: 'Area' },
+  { href: '/about', label: 'About' },
+];
+
 export default function Header() {
   return (
     <header className="bg-white shadow-sm border-b">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="text-2xl font-bold text-blue-600">
           ConvertEasy
         </Link>
-        <nav className="hidden md:flex gap-4 text-sm text-gray-600">
-          <Link href="/" className="hover:text-blue-600">Home</Link>
-          <Link href="/cooking/cups-to-grams" className="hover:text-blue-600">Cooking</Link>
-          <Link href="/length/cm-to-feet" className="hover:text-blue-600">Length</Link>
-          <Link href="/weight/kg-to-lbs" className="hover:text-blue-600">Weight</Link>
-          <Link href="/clothing/size-converter" className="hover:text-blue-600">Clothing</Link>
-          <Link href="/temperature/celsius-to-fahrenheit" className="hover:text-blue-600">Temp</Link>
-          <Link href="/speed/mph-to-kmh" className="hover:text-blue-600">Speed</Link>
-          <Link href="/area/sqft-to-sqm" className="hover:text-blue-600">Area</Link>
-          <Link href="/about" className="hover:text-blue-600">About</Link>
-        </nav>
-        <nav className="flex sm:hidden text-sm text-gray-600">
-          <Link href="/" className="hover:text-blue-600">Home</Link>
+        <nav className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-600">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="hover:text-blue-600">
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

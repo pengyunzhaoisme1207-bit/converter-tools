@@ -1,12 +1,14 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://converteasy.com';
+  const baseUrl = siteConfig.url;
 
   // Static pages
   const pages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 1 },
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.4 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
     // Cooking
     { url: `${baseUrl}/cooking/cups-to-grams`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },

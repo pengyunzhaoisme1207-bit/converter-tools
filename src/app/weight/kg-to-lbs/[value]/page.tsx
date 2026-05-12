@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { kgToLbs } from '@/lib/conversions';
 import AdSlot from '@/components/AdSlot';
+import JsonLd from '@/components/JsonLd';
+import RelatedLinks from '@/components/RelatedLinks';
+import { weightContext } from '@/lib/content';
+import { webApplicationJsonLd } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return Array.from({ length: 81 }, (_, i) => ({
@@ -14,7 +18,10 @@ export async function generateMetadata({ params }: { params: Promise<{ value: st
   const lbs = kgToLbs(num);
   return {
     title: `${num} kg to lbs - ${num} kilograms in pounds | ConvertEasy`,
-    description: `${num} kilograms equals ${lbs} pounds. Free online weight conversion tool.`,
+    description: `${num} kilograms equals ${lbs} pounds. Free weight conversion with nearby kg values and practical context.`,
+    alternates: {
+      canonical: `/weight/kg-to-lbs/${num}`,
+    },
   };
 }
 
@@ -25,6 +32,13 @@ export default async function DynamicWeightPage({ params }: { params: Promise<{ 
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: `${num} KG to Lbs Converter`,
+          description: `${num} kilograms equals ${lbs} pounds with nearby kilogram values and practical context.`,
+          path: `/weight/kg-to-lbs/${num}`,
+        })}
+      />
       <h1 className="text-3xl font-bold mb-2">{num} kg to lbs</h1>
       <p className="text-gray-500 mb-6">{num} kilograms converted to pounds</p>
 
@@ -33,7 +47,7 @@ export default async function DynamicWeightPage({ params }: { params: Promise<{ 
         <div className="text-xl text-gray-600">{num} kg = {lbs} lbs</div>
       </div>
 
-      <AdSlot className="ad-slot-result" />
+      <AdSlot slot="result" />
 
       <div className="bg-gray-50 rounded-lg p-4 mb-6">
         <h3 className="font-semibold text-gray-700 mb-3">Conversion Details</h3>
@@ -51,10 +65,20 @@ export default async function DynamicWeightPage({ params }: { params: Promise<{ 
         </table>
       </div>
 
-      <AdSlot className="ad-slot-middle" />
+      <AdSlot slot="middle" />
+
+      <section className="mt-8 text-gray-600 space-y-4">
+        <h2 className="text-xl font-semibold text-gray-800">What {num} kg Means</h2>
+        <p>{weightContext(num)}</p>
+        <p>
+          To convert kilograms to pounds, multiply the kilogram value by 2.20462. For {num} kg,
+          the result is {lbs} lbs. This conversion is common for gym tracking, medical forms,
+          package labels, luggage limits, and international product specifications.
+        </p>
+      </section>
 
       <div className="mt-6">
-        <h3 className="font-semibold text-gray-700 mb-3">Nearby Values</h3>
+        <h2 className="font-semibold text-gray-700 mb-3">Nearby Values</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm">
           {Array.from({ length: 11 }, (_, i) => num - 5 + i)
             .filter((v) => v >= 40 && v <= 120)
@@ -72,6 +96,14 @@ export default async function DynamicWeightPage({ params }: { params: Promise<{ 
             })}
         </div>
       </div>
+
+      <RelatedLinks
+        links={[
+          { href: '/weight/kg-to-lbs', label: 'KG to Lbs Converter', description: 'Interactive kilogram and pound converter.' },
+          { href: '/length/cm-to-feet', label: 'CM to Feet', description: 'Common height conversion.' },
+          { href: '/clothing/size-converter', label: 'Clothing Sizes', description: 'International size comparison.' },
+        ]}
+      />
     </div>
   );
 }

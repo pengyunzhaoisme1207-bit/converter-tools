@@ -1,13 +1,24 @@
 interface AdSlotProps {
-  className: string;
+  slot: 'top' | 'middle' | 'result' | 'bottom' | 'sidebar' | 'inline';
+  className?: string;
 }
 
-export default function AdSlot({ className }: AdSlotProps) {
+const minHeights: Record<AdSlotProps['slot'], string> = {
+  top: 'min-h-[90px]',
+  middle: 'min-h-[250px]',
+  result: 'min-h-[250px]',
+  bottom: 'min-h-[90px]',
+  sidebar: 'min-h-[300px]',
+  inline: 'min-h-[120px]',
+};
+
+export default function AdSlot({ slot, className = '' }: AdSlotProps) {
   return (
     <div
-      className={`${className} bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center min-h-[90px] my-6 text-gray-400 text-sm`}
+      className={`ad-slot-${slot} ${minHeights[slot]} ${className} bg-gray-50 border border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center my-8 text-gray-400 text-sm`}
+      aria-label="Advertisement"
     >
-      Ad Space
+      <span className="uppercase tracking-wide text-xs">Advertisement</span>
     </div>
   );
 }

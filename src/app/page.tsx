@@ -1,10 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CategoryCard from '@/components/CategoryCard';
+import JsonLd from '@/components/JsonLd';
+import RelatedLinks from '@/components/RelatedLinks';
+import FaqSection from '@/components/FaqSection';
+import { faqJsonLd, webApplicationJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'ConvertEasy - Free Online Unit Converter Tools',
   description: 'Free online unit converter tools for cooking, height, weight, clothing sizes, temperature, speed, and area. Fast, accurate conversions on any device.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 const categories = [
@@ -32,8 +39,31 @@ const quickLinks = [
 ];
 
 export default function HomePage() {
+  const faqs = [
+    {
+      question: 'Are the ConvertEasy tools free to use?',
+      answer: 'Yes. ConvertEasy tools are free, work in the browser, and do not require an account.',
+    },
+    {
+      question: 'Why do cooking conversions depend on the ingredient?',
+      answer: 'A cup measures volume, while grams measure weight. Flour, sugar, butter, milk, and oil have different densities, so each ingredient needs its own conversion factor.',
+    },
+    {
+      question: 'Can I link directly to a specific conversion page?',
+      answer: 'Yes. Many common height, inch, and kilogram values have their own static pages that can be bookmarked or shared.',
+    },
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: 'ConvertEasy',
+          description: 'Free online unit converter tools for everyday cooking, height, weight, length, speed, temperature, area, and clothing size conversions.',
+          path: '/',
+        })}
+      />
+      <JsonLd data={faqJsonLd(faqs)} />
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-3">ConvertEasy</h1>
         <p className="text-lg text-gray-500 mb-6">Free online unit converter tools</p>
@@ -66,6 +96,41 @@ export default function HomePage() {
           <CategoryCard key={cat.href} {...cat} />
         ))}
       </div>
+
+      <section className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="rounded-lg border bg-gray-50 p-5">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">Everyday Accuracy</h2>
+          <p className="text-sm text-gray-600">
+            Each converter uses standard formulas and clear rounding so you can quickly understand
+            the result without guessing how the number was calculated.
+          </p>
+        </div>
+        <div className="rounded-lg border bg-gray-50 p-5">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">Built for Search</h2>
+          <p className="text-sm text-gray-600">
+            Common height, weight, and length values have dedicated pages with nearby values and
+            related tools, making repeat lookups faster.
+          </p>
+        </div>
+        <div className="rounded-lg border bg-gray-50 p-5">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">No Sign-Up</h2>
+          <p className="text-sm text-gray-600">
+            Use the tools directly on mobile or desktop. ConvertEasy does not ask for accounts,
+            saved profiles, or payment information.
+          </p>
+        </div>
+      </section>
+
+      <RelatedLinks
+        links={[
+          { href: '/cooking/cups-to-grams', label: 'Cups to Grams', description: 'Best for recipes and baking.' },
+          { href: '/length/cm-to-feet', label: 'CM to Feet', description: 'Best for height conversions.' },
+          { href: '/weight/kg-to-lbs', label: 'KG to Lbs', description: 'Best for body weight and packages.' },
+          { href: '/area/sqft-to-sqm', label: 'Square Feet to Square Meters', description: 'Best for rooms and property sizes.' },
+        ]}
+      />
+
+      <FaqSection items={faqs} />
     </div>
   );
 }

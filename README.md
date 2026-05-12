@@ -2,6 +2,9 @@
 
 Free online unit converter tools built with Next.js 14 and Tailwind CSS.
 
+Project index: [00-索引.md](./00-索引.md)
+AdSense readiness: [04-发布/AdSense-ready-checklist.md](./04-发布/AdSense-ready-checklist.md)
+
 ## Features
 
 - **Cooking** — Cups to Grams (22 ingredients across 5 categories), Tablespoons/Teaspoons to Cups
@@ -12,7 +15,8 @@ Free online unit converter tools built with Next.js 14 and Tailwind CSS.
 - **Speed** — MPH to KM/H converter
 - **Area** — Square Feet to Square Meters converter
 - Mobile-responsive, SEO optimized with auto-generated sitemap
-- Google AdSense integrated (ads.txt verified)
+- Google AdSense script integrated globally
+- `ads.txt`, `/about`, `/privacy`, `/contact`, sitemap, canonical metadata, and JSON-LD included
 
 ## Getting Started
 
@@ -30,6 +34,8 @@ npm run build
 ```
 
 Generates 200+ static pages with SSG.
+
+Current build target: 221 static pages.
 
 ## Deploy
 

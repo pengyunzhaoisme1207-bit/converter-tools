@@ -22,7 +22,6 @@ export default function Footer() {
               <li><Link href="/speed/mph-to-kmh" className="text-gray-500 hover:text-blue-600">Speed</Link></li>
               <li><Link href="/area/sqft-to-sqm" className="text-gray-500 hover:text-blue-600">Area</Link></li>
               <li><Link href="/clothing/size-converter" className="text-gray-500 hover:text-blue-600">Clothing Sizes</Link></li>
-              <li><Link href="/currency/usd-to-jpy" className="text-gray-500 hover:text-blue-600">Currency</Link></li>
             </ul>
           </div>
           <div>
@@ -39,6 +38,7 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-700 mb-2">Info</h3>
             <ul className="space-y-1">
               <li><Link href="/about" className="text-gray-500 hover:text-blue-600">About</Link></li>
+              <li><Link href="/contact" className="text-gray-500 hover:text-blue-600">Contact</Link></li>
               <li><Link href="/privacy" className="text-gray-500 hover:text-blue-600">Privacy Policy</Link></li>
             </ul>
           </div>

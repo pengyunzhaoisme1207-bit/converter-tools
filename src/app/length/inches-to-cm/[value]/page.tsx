@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { inchesToCm } from '@/lib/conversions';
 import AdSlot from '@/components/AdSlot';
+import JsonLd from '@/components/JsonLd';
+import RelatedLinks from '@/components/RelatedLinks';
+import { inchesContext } from '@/lib/content';
+import { webApplicationJsonLd } from '@/lib/seo';
 
 export async function generateStaticParams() {
   return Array.from({ length: 72 }, (_, i) => ({
@@ -14,7 +18,10 @@ export async function generateMetadata({ params }: { params: Promise<{ value: st
   const cm = inchesToCm(num);
   return {
     title: `${num} inches to cm - ${num} inches in centimeters | ConvertEasy`,
-    description: `${num} inches equals ${cm} centimeters. Free online length conversion tool.`,
+    description: `${num} inches equals ${cm} centimeters. Free length conversion with nearby inch values and metric context.`,
+    alternates: {
+      canonical: `/length/inches-to-cm/${num}`,
+    },
   };
 }
 
@@ -25,6 +32,13 @@ export default async function DynamicInchesCmPage({ params }: { params: Promise<
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: `${num} Inches to CM Converter`,
+          description: `${num} inches equals ${cm} centimeters with nearby inch values and metric context.`,
+          path: `/length/inches-to-cm/${num}`,
+        })}
+      />
       <h1 className="text-3xl font-bold mb-2">{num} inches to cm</h1>
       <p className="text-gray-500 mb-6">{num} inches converted to centimeters</p>
 
@@ -33,7 +47,7 @@ export default async function DynamicInchesCmPage({ params }: { params: Promise<
         <div className="text-xl text-gray-600">{num} in = {cm} cm</div>
       </div>
 
-      <AdSlot className="ad-slot-result" />
+      <AdSlot slot="result" />
 
       <div className="bg-gray-50 rounded-lg p-4 mb-6">
         <h3 className="font-semibold text-gray-700 mb-3">Conversion Details</h3>
@@ -51,10 +65,21 @@ export default async function DynamicInchesCmPage({ params }: { params: Promise<
         </table>
       </div>
 
-      <AdSlot className="ad-slot-middle" />
+      <AdSlot slot="middle" />
+
+      <section className="mt-8 text-gray-600 space-y-4">
+        <h2 className="text-xl font-semibold text-gray-800">What {num} Inches Means</h2>
+        <p>{inchesContext(num)}</p>
+        <p>
+          The formula is simple: multiply inches by 2.54 to get centimeters. For {num} inches,
+          the result is {cm} cm. This is especially useful when product listings, furniture
+          dimensions, screen sizes, or craft instructions use inches while your measuring tape
+          or local standards use centimeters.
+        </p>
+      </section>
 
       <div className="mt-6">
-        <h3 className="font-semibold text-gray-700 mb-3">Nearby Values</h3>
+        <h2 className="font-semibold text-gray-700 mb-3">Nearby Values</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-sm">
           {Array.from({ length: 11 }, (_, i) => num - 5 + i)
             .filter((v) => v >= 1 && v <= 72)
@@ -72,6 +97,14 @@ export default async function DynamicInchesCmPage({ params }: { params: Promise<
             })}
         </div>
       </div>
+
+      <RelatedLinks
+        links={[
+          { href: '/length/inches-to-cm', label: 'Inches to CM Converter', description: 'Interactive inch-to-centimeter converter.' },
+          { href: '/length/cm-to-feet', label: 'CM to Feet', description: 'Height conversion in feet and inches.' },
+          { href: '/area/sqft-to-sqm', label: 'Sq Ft to Sq M', description: 'Convert home and room area.' },
+        ]}
+      />
     </div>
   );
 }
