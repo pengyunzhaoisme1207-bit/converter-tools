@@ -3,7 +3,7 @@ export const siteConfig = {
   url: 'https://converter.next-happy.com',
   description:
     'Free online unit converter tools for cooking, height, weight, length, clothing sizes, temperature, speed, and area.',
-  contactEmail: 'hello@next-happy.com',
+  contactEmail: 'contact@next-happy.com',
 };
 
 export function absoluteUrl(path = '') {
